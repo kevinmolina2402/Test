@@ -1,51 +1,55 @@
 ﻿
 Console.WriteLine("Hello, World!");
 
-var persona = new Personas();
-Personas persona1 = new Personas();
-Personas persona2 = new Estudiantes();
+Personas persona = new Personas();
+var persona1 = new Personas();
+Estudiantes persona2 = new Estudiantes();
+Personas persona3 = persona2;
+Personas persona4 = (Personas)persona2;
+Personas persona5 = (Estudiantes)persona2;
 
 persona.Id = 1;
 persona.Nombre = "Pepito Perez";
-persona.Activo = true;
-persona.Salario = 1400000.0m;
-persona.Tipo = new Tipos() { Id = 1, Nombre = "Casado" };
+persona.Estatura = 1.60m;
+persona.Vive = false;
+persona.Fecha = DateTime.Now;
+persona.Estado = new Estados() { Id = 1, Nombre = "Viudo" };
 persona.VideoJuegos = new List<VideoJuegos>();
-persona.VideoJuegos.Add(new VideoJuegos() { Id = 1, Nombre = "LOZ 2025" });
-persona.VideoJuegos.Add(new VideoJuegos() { Id = 2, Nombre = "Tetrix" });
+persona.VideoJuegos.Add(new VideoJuegos() { Id = 1, Nombre = "GTA" });
+persona.VideoJuegos.Add(new VideoJuegos() { Id = 2, Nombre = "DOOM" });
 
 Console.WriteLine(persona.Nombre);
-Console.WriteLine(persona.Tipo.Nombre);
+Console.WriteLine(persona.Estado.Nombre);
 
 foreach (var elemento in persona.VideoJuegos)
 {
     Console.WriteLine(elemento.Nombre);
 }
 
-public class Tipos
+public class Estados
 {
-    public int Id = 0;
-    public String? Nombre = "";
+    public int Id;
+    public string? Nombre;
 }
 
 public class VideoJuegos
 {
-    public int Id = 0;
-    public String? Nombre = "";
+    public int Id;
+    public string? Nombre;
 }
 
 public class Personas
 {
-    public int Id = 0;
-    public String? Nombre = "";
-    public DateTime Fecha = DateTime.Now;
-    public bool Activo = false;
-    public decimal Salario = 0.0m;
-    public Tipos Tipo = new Tipos();
-    public List<VideoJuegos> VideoJuegos = new List<VideoJuegos>();
+    public int Id;
+    public string? Nombre;
+    public decimal Estatura;
+    public bool Vive;
+    public DateTime Fecha;
+    public Estados? Estado;
+    public List<VideoJuegos>? VideoJuegos;
 }
 
 public class Estudiantes : Personas
 {
-    public String? Carnet = "";
+    public string? Carnet;
 }
