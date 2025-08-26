@@ -48,8 +48,24 @@ public class Personas
     public Estados? Estado;
     public List<VideoJuegos>? VideoJuegos;
 }
+public interface IEstudiantes
+{
+    bool Matricula();
+}
+public interface ISeguros
+{
+    decimal SeguroDeVida(string nombre);
+}
 
-public class Estudiantes : Personas
+public class Estudiantes : Personas, IEstudiantes, ISeguros
 {
     public string? Carnet;
+    public bool Matricula()
+    {
+        return true;
+    }
+    public decimal SeguroDeVida(string nombre)
+    {
+        return 0.0m;
+    }
 }
