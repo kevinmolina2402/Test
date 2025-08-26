@@ -1,37 +1,51 @@
 ﻿
-Console.WriteLine("Hello, World");
-    Carros carro = new();
-    carro.id =1;
-    carro.placa= "ABC 123";
-    carro.CaballosFuerza = 600;
-    
-    carro.precio = 1000;
-    carro.Encendido = true;
-    carro.FechaFabricacion = DateTime.Now;
-    carro.Marca = new Marcas(){id = 1, Marca = "bmw"};
-    /*marca.modelo = new modelos(){id =1, modelo "M3"}*/;
+Console.WriteLine("Hello, World!");
 
-public class Carros
-{   
-    public int id;
-    public string? placa;
-    public int CaballosFuerza;
-    public float precio;
-    public bool Encendido;
-    public DateTime FechaFabricacion;
-    public Marcas? Marca;
+var persona = new Personas();
+Personas persona1 = new Personas();
+Personas persona2 = new Estudiantes();
 
+persona.Id = 1;
+persona.Nombre = "Pepito Perez";
+persona.Activo = true;
+persona.Salario = 1400000.0m;
+persona.Tipo = new Tipos() { Id = 1, Nombre = "Casado" };
+persona.VideoJuegos = new List<VideoJuegos>();
+persona.VideoJuegos.Add(new VideoJuegos() { Id = 1, Nombre = "LOZ 2025" });
+persona.VideoJuegos.Add(new VideoJuegos() { Id = 2, Nombre = "Tetrix" });
 
+Console.WriteLine(persona.Nombre);
+Console.WriteLine(persona.Tipo.Nombre);
 
+foreach (var elemento in persona.VideoJuegos)
+{
+    Console.WriteLine(elemento.Nombre);
 }
 
-public class Marcas{
-    public int id;
-    public string? Marca;
-    
+public class Tipos
+{
+    public int Id = 0;
+    public String? Nombre = "";
 }
 
-/*public class modelos : marcas{
-    public int id;
-    public string? modelo;
-}*/
+public class VideoJuegos
+{
+    public int Id = 0;
+    public String? Nombre = "";
+}
+
+public class Personas
+{
+    public int Id = 0;
+    public String? Nombre = "";
+    public DateTime Fecha = DateTime.Now;
+    public bool Activo = false;
+    public decimal Salario = 0.0m;
+    public Tipos Tipo = new Tipos();
+    public List<VideoJuegos> VideoJuegos = new List<VideoJuegos>();
+}
+
+public class Estudiantes : Personas
+{
+    public String? Carnet = "";
+}
